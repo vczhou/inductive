@@ -10,9 +10,13 @@ to install,
 
 start up your virtualenv
 and then run 
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 after this go to inductive and run
-```python manage.py migrate```
-```python manage.py makemigrations```
-```python manage.py runserver```
+```
+python manage.py migrate
+python manage.py makemigrations
+python manage.py runserver
+```
