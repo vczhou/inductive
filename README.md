@@ -4,7 +4,7 @@ Indigitous #Hack Austin
 hello i don't know how markdown works.
 to install make sure you have python >= 3.6 and pip installed. 
 
-i highly recommend installing a virrtualenv, so look up python virtual env
+i highly recommend installing a virtualenv, so look up python virtual env
 
 to install,
 
