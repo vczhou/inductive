@@ -4,8 +4,8 @@ from django.db import models
 
 class Chapter(models.Model):
     book = models.CharField(max_length=20)
-    chapter = models.IntegerField(default=1)
+    chap = models.IntegerField(default=1)
 
 class Question(models.Model):
-    reference = models.ForeignKey(Chapter, on_delete=models.CASCADE,)
-    question_text = models.CharField(max_length=400)
+    reference = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name='points_to')
+    question_text = models.TextField(max_length=400)

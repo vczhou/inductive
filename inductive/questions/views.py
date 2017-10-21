@@ -1,15 +1,30 @@
 from django.http import Http404
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
-from .models import Chapter
+from .models import Chapter, Question
+from .forms import QuestionForm
 # Create your views here.
 
 # def chapter_questions(request, )
 
-def index(request, bk, chap):
-    print(bk, chap)
+def chap_view(request, bk, chapter):
     try:
-        chapter = Chapter.objects.get(book=str(bk), chapter = int(chap));
+        chapter_obj = Chapter.objects.get(book=str(bk), chap = int(chapter))
     except:
         raise Http404("Stop that!")
-    return HttpResponse("<html><body>Book: %s. Chapter:</body></html>" %chapter.book)
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            q = Question(reference=chapter_obj, question_text=form.cleaned_data['question'])
+            # print('xd')
+            q.save()
+            return redirect('chap_view', bk, chapter)
+    else:
+        form = QuestionForm()
+    return render(request, 'chapter.html', {
+        'book': chapter_obj.book,
+        'chapter': chapter_obj.chap,    
+        'form': form,
+        'questions': chapter_obj.points_to.all()
+    })
