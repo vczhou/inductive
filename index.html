@@ -19,6 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
   </head>
 
   <body>
@@ -29,38 +30,14 @@
         <h1>Inductive Bible Study Questions</h1>
         <h3>Ask Questions</h3>
         <br>
-          <div class="btn-group" role="group" aria-label="...">
-              <div style="display:none">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Book
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Genesis</a>
-                <a class="dropdown-item" href="#">Exodus</a>
-                <a class="dropdown-item" href="#">Leviticus</a>
-              </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Chapter
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">1</a>
-                  <a class="dropdown-item" href="#">2</a>
-                  <a class="dropdown-item" href="#">3</a>
-                </div>
-            </div>
-              </div> <!-- No display -->
-
+          <div class="btn-group" role="group" aria-label="..." id="reference">
             <script type= "text/javascript" src = "js/books.js"></script>
-            <select class="btn btn-secondary dropdown-toggle" id="book" name="book">Book</select>
+            <select class="btn btn-secondary dropdown-toggle" id="book" name="book"></select>
             </select>
 
             <br />
 
-            <select class="btn btn-secondary dropdown-toggle" id="chapter" name="chapter">Chapter</select>
+            <select class="btn btn-secondary dropdown-toggle" id="chapter" name="chapter" onchange="getReference();"></select>
 
             <script language="javascript">
               populateBooks("book", "chapter");
@@ -71,7 +48,11 @@
     </header>
 
     <!-- Bootstrap core JavaScript -->
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
     <!-- Custom scripts for this template -->
     <script src="js/stylish-portfolio.js"></script>

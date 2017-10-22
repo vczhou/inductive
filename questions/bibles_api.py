@@ -43,6 +43,12 @@ class BiblesAPI():
             data = {"error": e}
         return data
 
+    def books(self):
+        url = self._API_BASE_URL + "versions/" + self._LANGUAGE + "-" + self._BIBLE_VERSION + "/books.js"
+        response = self.getResponse(url)
+        print("BOOKS:", response)
+        return response
+
     def chapter(self, book_name, chapter_number):
         url = self._API_BASE_URL + "chapters/" + self._LANGUAGE + "-" + \
               self._BIBLE_VERSION + ":" + book_name + "." + \
@@ -72,5 +78,6 @@ class BiblesAPI():
 
 if __name__ == '__main__':
     testApi = BiblesAPI("ESV")
-    r = testApi.chapter("Ex", 1)
+    r = testApi.chapter("Gen", 1)
+    testApi.books()
 
