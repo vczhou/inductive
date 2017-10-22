@@ -10,7 +10,7 @@ class BiblesAPI():
     def __init__(self, bible_version="ESV", language="eng"):
           self._BIBLE_VERSION = bible_version
           self._LANGUAGE = language
-          print ("Bibles API Key",self._BIBLES_API_KEY)
+        #   print ("Bibles API Key",self._BIBLES_API_KEY)
 
     def setBibleVersion(self, bible_version="ESV"):
         self._BIBLE_VERSION = bible_version
@@ -71,13 +71,17 @@ class BiblesAPI():
             'include-chapter-numbers': 'true',
             'include-first-verse-numbers': 'true',
             'include-verse-numbers': 'true',
+            'include-footnotes': 'false',
             'include-headings': 'true'
             }
         r = requests.get('https://api.esv.org/v3/passage/html/', params = payload, headers={'Authorization': 'Token cbf78308c748ab16c2bf250961ba5e1d5e619e56'})
-        return r.json()['passages']
+        response = r.json()['passages']
+        response = response[0].replace("\\n", " ")
+        return response
 
 if __name__ == '__main__':
     testApi = BiblesAPI("ESV")
     r = testApi.chapter("Gen", 1)
     testApi.books()
+    testApi.esv("John", 1)
 

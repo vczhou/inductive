@@ -13,6 +13,7 @@ def index(request):
 def chap_view(request, bk, chapter):
     try:
         chapter_obj = Chapter.objects.get(book=str(bk), chap = int(chapter))
+        print(chapter_obj)
         bib = BiblesAPI("ESV")
         passage = bib.esv(bk,int(chapter))
     except:

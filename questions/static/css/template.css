@@ -8,8 +8,13 @@ body {
   padding-top: 54px;
 }
 
+#passages {
+  padding-top: 100px;
+}
+
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
+    background:url(../img/bg.jpg) repeat-y center center scroll;
   }
 }
