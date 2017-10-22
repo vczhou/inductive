@@ -1,1 +1,1 @@
-web: gunicorn inductive.wsgi --log-file -
+web: gunicorn inductive.wsgi
