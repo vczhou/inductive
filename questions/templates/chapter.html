@@ -2,78 +2,80 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Inductive Bible Study Questions</title>
+  <title>Inductive Bible Study Questions</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/template.css'%}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/template.css'%}" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">Inductive Bible Study Questions</a>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="row">
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
-          <!-- Title -->
-          <!-- <h1 class="mt-4">{{ book }} {{ chapter }}</h1> -->
-          <h1 class="mt-4">
-            <br>
-          </h1>
-          <hr>
-          <!-- Post Content -->
-          <p class="lead">
-            {% autoescape off %}{{passage}}{% endautoescape %}
-          </p>
-        </div>
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-          <h1 class="mt-4">
-            <br>
-          </h1>
-          <!-- Comments Form -->
-          <div class="card my-4">
-            <h5 class="card-header">Submit a question about the chapter:</h5>
-            <div class="card-body">
-              {% comment %} <form>
-                <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">submit</button>
-              </form> {% endcomment %}
-              <form method="POST" action="{% url 'chap_view' book chapter%}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
+      <a class="navbar-brand" href="/">Inductive Bible Study Questions</a>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+        <!-- Title -->
+        <!-- <h1 class="mt-4">{{ book }} {{ chapter }}</h1> -->
+        <h1 class="mt-4">
+          <br>
+        </h1>
+        <hr>
+        <!-- Post Content -->
+        <p class="lead">
+          {% autoescape off %}{{passage}}{% endautoescape %}
+        </p>
+      </div>
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+        <h1 class="mt-4">
+          <br>
+        </h1>
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Submit a question about the chapter:</h5>
+          <div class="card-body">
+            {% comment %}
+            <form>
+              <div class="form-group">
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">submit</button>
+            </form> {% endcomment %}
+            <form method="POST" action="{% url 'chap_view' book chapter%}">
+              {% csrf_token %} {{ form.as_p }}
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Submitted Questions</h5>
+        </div>
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Submitted Questions</h5>
+          <div class="container">
             {% for q in questions%}
+            <br>
             <div class="card card-outline-primary mb-3 text-center">
               <div class="card-block">
                 <blockquote class="card-blockquote">
-                  <p>{{q.question_text}}</p>
+                  <p style="padding:10px">{{q.question_text}}</p>
                 </blockquote>
               </div>
             </div>
@@ -81,23 +83,24 @@
           </div>
         </div>
       </div>
-      <!-- /.row -->
-
     </div>
-    <!-- /.container -->
+    <!-- /.row -->
 
-    <hr>
+  </div>
+  <!-- /.container -->
 
-    <!-- <footer class="py-5 bg-dark">
+  <hr>
+
+  <!-- <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
       </div>
     </footer>
  -->
-    <!-- Bootstrap core JavaScript -->
-    <!-- <script src="vendor/jquery/jquery.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <!-- <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
-  </body>
+</body>
 
 </html>
