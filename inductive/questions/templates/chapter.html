@@ -37,7 +37,9 @@
           <h1 class="mt-4">{{ book }} {{ chapter }}</h1>
           <hr>
           <!-- Post Content -->
-          <p class="lead">Chapter text goes here</p>
+          <p class="lead">
+            {% autoescape off %}{{passage}}{% endautoescape %}
+          </p>
         </div>
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">

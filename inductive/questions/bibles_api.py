@@ -55,7 +55,22 @@ class BiblesAPI():
         print ("Text:", text)
         return text
 
+    def esv(self, book_name, chapter_number):
+        payload = { 'q': str(book_name) + str(chapter_number),
+            'include-css-link': 'true',
+            'inline-styles': 'true',
+            'wrapping-div': 'true',
+            'include-passage-references': 'true',
+            'include-verse-anchors': 'true',
+            'include-chapter-numbers': 'true',
+            'include-first-verse-numbers': 'true',
+            'include-verse-numbers': 'true',
+            'include-headings': 'true'
+            }
+        r = requests.get('https://api.esv.org/v3/passage/html/', params = payload, headers={'Authorization': 'Token cbf78308c748ab16c2bf250961ba5e1d5e619e56'})
+        return r.json()['passages']
+
 if __name__ == '__main__':
     testApi = BiblesAPI("ESV")
-    r = testApi.chapter("John", 1)
+    r = testApi.chapter("Ex", 1)
 
