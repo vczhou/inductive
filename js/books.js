@@ -20,7 +20,7 @@ function populateChapters( bookElementId, chapterElementId ){
 	var chapterElement = document.getElementById( chapterElementId );
 	
 	chapterElement.length=0;	// Fixed by Julian Woods
-	chapterElement.options[0] = new Option('','');
+	chapterElement.options[0] = new Option('Chapter','');
 	chapterElement.selectedIndex = 0;
 	
 	//var chapter_arr = _.range(1, chapters[selectedBookIndex] + 1);
@@ -37,11 +37,19 @@ function range(start, count) {
       });
 }
 
+function getReference() {
+	  var book=$('#book option:selected').html();
+	  book = book.replace(' ', '_');
+      var chapter=$('#chapter option:selected').html();
+      url = "http://localhost:8000/" + book + "_" + chapter;
+      window.location.replace(url);
+}
+
 function populateBooks(bookElementId, chapterElementId){
 	// given the id of the <select> tag as function argument, it inserts <option> tags
 	var bookElement = document.getElementById(bookElementId);
 	bookElement.length=0;
-	bookElement.options[0] = new Option('','-1');
+	bookElement.options[0] = new Option('Book','-1');
 	bookElement.selectedIndex = 0;
 	for (var i=0; i<books.length; i++) {
 		bookElement.options[bookElement.length] = new Option(books[i],books[i]);
