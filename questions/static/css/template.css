@@ -15,6 +15,6 @@ body {
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
-    background:url(../img/bg.jpg) repeat-y center center scroll;
+    background:url(../img/bg_sky.jpg) repeat-y center center scroll;
   }
 }
