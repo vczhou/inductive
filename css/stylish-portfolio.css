@@ -18,7 +18,9 @@ body {
 .text-vertical-center {
   display: table-cell;
   text-align: center;
-  vertical-align: middle;
+  position: relative;
+  vertical-align: center;
+  padding: 8%;
 }
 
 .text-vertical-center h1 {
